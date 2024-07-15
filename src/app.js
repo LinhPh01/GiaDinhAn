@@ -22,3 +22,4 @@ if (!window.APP_CONFIG) {
 // Mount React App
 const root = createRoot(document.getElementById("app"));
 root.render(React.createElement(App));
+// push vercel
