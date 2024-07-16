@@ -40,12 +40,22 @@
   "scripts": {
   
     
-  "start": "zmp start",
+  "build:css": "postcss src/css/tailwind.css -o src/css/styles.css",
   
     
-  "build:css": "postcss src/css/tailwind.css -o src/css/styles.css",  
+  "start": "vite",
+  
+    
+  "build": "vite build",
+  
+    
+  "serve": "vite preview",
+  
+    
   "predeploy": "npm run build",
-  "deploy": "npm run jekyll:build && gh-pages -d _site"
+  
+    
+  "deploy": "npm run build && gh-pages -d dist"
   
   },
   
