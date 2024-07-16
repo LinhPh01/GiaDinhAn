@@ -1,1 +1,0 @@
-function o(n){o.on&&o.engine(n)}o.on=!1,o.engine=function(n){var e=n.name,i=n.type,r=n.state,s=n.request,a=n.response,f=n.stage;console[i]([e,f,r,s,a].filter(Boolean).map(function(t){return typeof t=="object"?JSON.stringify(t):t}).join("; "))};export{o as e};

@@ -43,19 +43,19 @@
   "build:css": "postcss src/css/tailwind.css -o src/css/styles.css",
   
     
-  "start": "zmp start",
+  "start": "vite",
   
     
-  "build": "zmp build",
+  "build": "vite build",
   
     
   "serve": "vite preview",
   
     
-  "predeploy": "zmp build",
+  "predeploy": "npm run build",
   
     
-  "deploy": "zmp deploy && gh-pages -d dist"
+  "deploy": "vite build && gh-pages -d dist"
   
   },
   

@@ -1,1 +1,0 @@
-import{B as o}from"./Barcode.js_commonjs-exports.fc132915.js";Object.defineProperty(o,"__esModule",{value:!0});function r(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}var c=function e(t,a){r(this,e),this.data=t,this.text=a.text||t,this.options=a};o.default=c;
