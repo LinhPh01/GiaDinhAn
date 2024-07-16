@@ -1,0 +1,1 @@
+function a(n,o){for(var r=0;r<o.length;r++){var e=o[r];e.enumerable=e.enumerable||!1,e.configurable=!0,"value"in e&&(e.writable=!0),Object.defineProperty(n,e.key,e)}}function u(n,o,r){return o&&a(n.prototype,o),r&&a(n,r),n}export{u as r};

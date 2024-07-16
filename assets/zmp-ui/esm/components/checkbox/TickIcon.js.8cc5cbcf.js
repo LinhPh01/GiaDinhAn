@@ -1,0 +1,1 @@
+import{R as e}from"../../../../react/index.js.1d37a627.js";var t=function(){return e.createElement("svg",{xmlns:"http://www.w3.org/2000/svg",width:"100%",height:"100%",viewBox:"0 0 14 11",fill:"none"},e.createElement("path",{d:"M1.5 5.5L5 9L12.5 1.5",stroke:"currentColor",strokeWidth:"3",strokeLinecap:"round",strokeLinejoin:"round"}))},n=t;export{n as T};
