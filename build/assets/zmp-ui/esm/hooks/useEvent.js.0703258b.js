@@ -1,0 +1,1 @@
+import{R as e}from"../../../react/index.js.1d37a627.js";function f(a){var r=e.useRef();return r.current=a,e.useCallback(function(){for(var t=arguments.length,u=new Array(t),n=0;n<t;n++)u[n]=arguments[n];return r.current==null?void 0:r.current.apply(r,u)},[])}export{f as u};

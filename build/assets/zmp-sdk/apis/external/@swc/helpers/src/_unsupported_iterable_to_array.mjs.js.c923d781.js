@@ -1,0 +1,1 @@
+import{n}from"./_array_like_to_array.mjs.js.b642ec6f.js";function i(r,e){if(r){if(typeof r=="string")return n(r,e);var t=Object.prototype.toString.call(r).slice(8,-1);return t==="Object"&&r.constructor&&(t=r.constructor.name),t==="Map"||t==="Set"?Array.from(t):t==="Arguments"||/^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t)?n(r,e):void 0}}export{i as t};
