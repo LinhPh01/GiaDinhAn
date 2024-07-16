@@ -1,1 +1,0 @@
-var t=function(o){return o.top="top",o.bottom="bottom",o}({}),n=function(o){return o.default="default",o.success="success",o.info="info",o.error="error",o.warning="warning",o.loading="loading",o.download="download",o.countdown="countdown",o["wifi-connected"]="wifi-connected",o["wifi-disconnected"]="wifi-disconnected",o}({});export{t as S,n as a};
