@@ -1,1 +1,0 @@
-import{l}from"./linearizeEncodings.js_commonjs-exports.521fac61.js";Object.defineProperty(l,"__esModule",{value:!0});l.default=e;function e(n){var a=[];function i(r){if(Array.isArray(r))for(var t=0;t<r.length;t++)i(r[t]);else r.text=r.text||"",r.data=r.data||"",a.push(r)}return i(n),a}
