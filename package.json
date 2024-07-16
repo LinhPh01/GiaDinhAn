@@ -1,7 +1,7 @@
 {
   "homepage": "https://linhph01.github.io/gia-dinh-ann/",
   "name": "gia-đình-ann",
-  "private": true,
+  "private": false,
   "version": "1.0.0",
   "description": "Gia đình Ann",
   "repository": "",
