@@ -43,7 +43,7 @@
   "build:css": "postcss src/css/tailwind.css -o src/css/styles.css",
   
     
-  "start": "vite",
+  "start": "vite start",
   
     
   "build": "vite build",

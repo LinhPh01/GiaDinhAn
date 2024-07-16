@@ -73,7 +73,7 @@ const Banneruser = () => {
 
   // gọi thông tin id người dùng
   const fetchUserID = async () => {
-    const getnumber = "0931305101";
+    
     const response = await fetch(
       "https://naman.tmsoftware.vn/api/storeCustomer",
       {
@@ -83,7 +83,7 @@ const Banneruser = () => {
         },
         body: JSON.stringify({
           api_key: "8AF1apnMW2A39Ip7LUFtNstE5RjYleSf",
-          phone: getnumber ,
+          phone: "0931305101" ,
         }),
       }
     );
