@@ -138,8 +138,8 @@ const FormPage = () => {
         },
         body: JSON.stringify({
           api_key: "8AF1apnMW2A39Ip7LUFtNstE5RjYleSf",
-          phone: phone || null,
-          name: name || null,
+          phone: "0367259158",
+          name: "nam",
           age: age || null,
           gender: gender || null,
           email: email || null,

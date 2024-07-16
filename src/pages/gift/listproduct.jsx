@@ -75,7 +75,8 @@ const Listproduct = () => {
         },
         body: JSON.stringify({
           api_key: "8AF1apnMW2A39Ip7LUFtNstE5RjYleSf",
-          phone: "0931305101",
+          phone: "0367259158",
+          name: "nam",
         }),
       }
     );
