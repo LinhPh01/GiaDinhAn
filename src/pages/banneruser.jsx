@@ -31,45 +31,7 @@ const Banneruser = () => {
     return phoneNumber;
   };
 
-  // lấy số điện thoại từ zalo
-  const fetchPhoneNumber = async (userAccessToken) => {
-    getPhoneNumber({
-      success: async (data) => {
-        let { token } = data;
-        console.log("Token:", token);
-
-        try {
-          const response = await fetch("https://graph.zalo.me/v2.0/me/info", {
-            headers: {
-              access_token: userAccessToken,
-              code: token,
-              secret_key: secretKey,
-            },
-          });
-
-          if (!response.ok) {
-            throw new Error(`lỗi response: ${response.status}`);
-          }
-
-          const data = await response.json();
-          console.log("data trả về :", data);
-
-          if (data.data && data.data.number) {
-            const formattedPhoneNumber = processPhoneNumber(data.data.number);
-            setPhoneNumber(formattedPhoneNumber);
-            console.log("update sdt", phone);
-          } else {
-            console.log("Không nhận được số điện thoại từ API.");
-          }
-        } catch (error) {
-          console.error("Lỗi khi gọi API: ", error);
-        }
-      },
-      fail: (error) => {
-        console.log(error);
-      },
-    });
-  };
+ 
 
   // gọi thông tin id người dùng
   const fetchUserID = async () => {
