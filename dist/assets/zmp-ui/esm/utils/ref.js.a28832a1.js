@@ -1,0 +1,1 @@
+import"../../.b5778471.js";function c(t,n){typeof t=="function"?t(n):typeof t=="object"&&t&&"current"in t&&(t.current=n)}function e(){for(var t=arguments.length,n=new Array(t),r=0;r<t;r++)n[r]=arguments[r];var o=n.filter(function(i){return i});return o.length<=1?o[0]:function(i){n.forEach(function(u){c(u,i)})}}export{e as c};

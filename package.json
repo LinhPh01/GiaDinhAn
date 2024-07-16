@@ -46,7 +46,7 @@
   "start": "vite",
   
     
-  "build": "vite build && zmp login",
+  "build": "vite build --base=./",
   
     
   "serve": "vite preview",
@@ -55,7 +55,7 @@
   "predeploy": "npm run build",
   
     
-  "deploy": "npm run build && gh-pages -d dist"
+  "deploy": "npm run build --base=./ && gh-pages -d dist"
   
   },
   

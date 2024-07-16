@@ -24,18 +24,18 @@ export const userState = selector({
 
 
 
-import { getStorageInfo } from "zmp-sdk/apis";
+// import { getStorageInfo } from "zmp-sdk/apis";
 
-getStorageInfo({
-  success: (data) => {
-    // xử lý khi gọi api thành công
-    const { currentSize, limitSize } = data;
-  },
-  fail: (error) => {
-    // xử lý khi gọi api thất bại
-    console.log(error);
-  }
-});
+// getStorageInfo({
+//   success: (data) => {
+//     // xử lý khi gọi api thành công
+//     const { currentSize, limitSize } = data;
+//   },
+//   fail: (error) => {
+//     // xử lý khi gọi api thất bại
+//     console.log(error);
+//   }
+// });
 // export const phoneState = selector<string | boolean>({
 //   key: "phone",
 //   get: async ({ get }) => {
