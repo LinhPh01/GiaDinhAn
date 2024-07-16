@@ -5,11 +5,11 @@ import reactRefresh from "@vitejs/plugin-react";
 export default () => {
   return defineConfig({
     root: "./",
-    base: "GiaDinhAn",
+    base: "/src",
     plugins: [reactRefresh()],
-    // build: {
-    //   outDir: "../dist",
-    //   emptyOutDir: true,
-    // }
+    build: {
+      outDir: "../dist",
+      emptyOutDir: true,
+    }
   });
 };
