@@ -1,10 +1,10 @@
 {
   "homepage": "https://linhph01.github.io/gia-dinh-ann/",
-  "name": "gia-đình-ann",
-  "private": false,
+  "name": "gia-dinh-an",
+  "private": true,
   "version": "1.0.0",
   "description": "Gia đình Ann",
-  "repository": "",
+  "repository": "../gia-dinh-ann/src/app.js",
   "license": "UNLICENSED",
   "browserslist": [
     "Android >= 5",
