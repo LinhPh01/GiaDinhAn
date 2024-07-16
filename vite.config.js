@@ -8,6 +8,7 @@ export default () => {
     base: "./",
     plugins: [react()],
     build: {
+      polyfillModulePreload:false,
       rollupOptions: {
       output:{
       manualChunks(id) {
