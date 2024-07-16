@@ -1,0 +1,1 @@
+import{e as r}from"./_assert_this_initialized.mjs.js.b0c901cc.js";import{o as f}from"./_type_of.mjs.js.029dfe98.js";function m(t,o){return!o||f(o)!=="object"&&typeof o!="function"?r(t):o}export{m as i};

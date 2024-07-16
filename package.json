@@ -4,7 +4,7 @@
   "private": true,
   "version": "1.0.0",
   "description": "Gia đình Ann",
-  "repository": "../gia-dinh-ann/src/app.js",
+  "repository": "",
   "license": "UNLICENSED",
   "browserslist": [
     "Android >= 5",
@@ -17,10 +17,11 @@
   ],
   "scripts": {
     "build:css": "postcss src/css/tailwind.css -o src/css/styles.css",
-    "start": "zmp start",
-    "build": "zmp build",
-    
-    "deploy": "zmp deploy"
+    "start": "vite",
+    "build": "vite build --outDir dist",
+    "serve": "vite preview",
+    "predeploy": "npm run build",
+    "deploy": "vite build && gh-pages -d dist"
   },
   "dependencies": {
     "@vitejs/plugin-react": "^1.3.0",
