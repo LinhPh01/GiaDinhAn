@@ -1,5 +1,6 @@
 // Import React and ReactDOM
 import React from "react";
+
 import { createRoot } from "react-dom/client";
 
 // Import tailwind styles
@@ -12,7 +13,7 @@ import "swiper/css";
 import "swiper/css/pagination";
 
 // Import App Component
-import App from "./components/app.jsx";
+import App from "./components/app";
 import appConfig from "../app-config.json";
 
 if (!window.APP_CONFIG) {
