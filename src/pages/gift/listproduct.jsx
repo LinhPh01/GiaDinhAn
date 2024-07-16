@@ -1,198 +1,165 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Box, Text, Sheet } from "zmp-ui";
 import Ann from "../../../assets-src/Ann.svg";
-import { useRecoilState } from "recoil";
-import { phoneNumberState } from "../../state";
-import { getAccessToken, getPhoneNumber } from "zmp-sdk/apis";
+// import { useRecoilState } from "recoil";
+// import { phoneNumberState } from "../../state";
+// import { getAccessToken, getPhoneNumber } from "zmp-sdk/apis";
 
 // list sản phẩm trong phần ưu đãi
 const Listproduct = () => {
-  const [phone, setPhoneNumber] = useRecoilState(phoneNumberState);
-  const [sheetVisible, setSheetVisible] = useState(false);
-  const [listInvest, setListInvest] = useState([]);
-  const [pointtotal, setPointTotal] = useState();
-  const [selectedItem, setSelectedItem] = useState(null);
+  // const [phone, setPhoneNumber] = useRecoilState(phoneNumberState);
+  // const [sheetVisible, setSheetVisible] = useState(false);
+  // const [listInvest, setListInvest] = useState([]);
+  // const [pointtotal, setPointTotal] = useState();
+  // const [selectedItem, setSelectedItem] = useState(null);
 
-  //getphone zmp
-  const secretKey = "K2UHm5uysg8RfBiDA846";
+  // //getphone zmp
+  // const secretKey = "K2UHm5uysg8RfBiDA846";
 
-  //api getphone
-  const processPhoneNumber = (phoneNumber) => {
-    if (phoneNumber.startsWith("84")) {
-      return "0" + phoneNumber.substring(2); // Thêm "0" và loại bỏ "84" ở đầu
-    }
-    return phoneNumber; // Trả về nguyên gốc nếu không thay đổi
-  };
+  // //api getphone
+  // const processPhoneNumber = (phoneNumber) => {
+  //   if (phoneNumber.startsWith("84")) {
+  //     return "0" + phoneNumber.substring(2); // Thêm "0" và loại bỏ "84" ở đầu
+  //   }
+  //   return phoneNumber; // Trả về nguyên gốc nếu không thay đổi
+  // };
 
-  const fetchPhoneNumber = async (userAccessToken) => {
-    getPhoneNumber({
-      success: async (data) => {
-        let { token } = data;
-        console.log("Token:", token);
+  // const fetchPhoneNumber = async (userAccessToken) => {
+  //   getPhoneNumber({
+  //     success: async (data) => {
+  //       let { token } = data;
+  //       console.log("Token:", token);
 
-        try {
-          const response = await fetch("https://graph.zalo.me/v2.0/me/info", {
-            headers: {
-              access_token: userAccessToken,
-              code: token,
-              secret_key: secretKey,
-            },
-          });
+  //       try {
+  //         const response = await fetch("https://graph.zalo.me/v2.0/me/info", {
+  //           headers: {
+  //             access_token: userAccessToken,
+  //             code: token,
+  //             secret_key: secretKey,
+  //           },
+  //         });
 
-          if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
-          }
+  //         if (!response.ok) {
+  //           throw new Error(`HTTP error! status: ${response.status}`);
+  //         }
 
-          const data = await response.json();
-          console.log("data trả về :", data);
+  //         const data = await response.json();
+  //         console.log("data trả về :", data);
 
-          if (data.data && data.data.number) {
-            const formattedPhoneNumber = processPhoneNumber(data.data.number);
-            setPhoneNumber(formattedPhoneNumber);
-            console.log("change phone ", phone);
-          } else {
-            console.log("Không nhận được số điện thoại từ API.");
-          }
-        } catch (error) {
-          console.error("Lỗi khi gọi API: ", error);
-        }
-      },
-      fail: (error) => {
-        console.log(error);
-      },
-    });
-  };
+  //         if (data.data && data.data.number) {
+  //           const formattedPhoneNumber = processPhoneNumber(data.data.number);
+  //           setPhoneNumber(formattedPhoneNumber);
+  //           console.log("change phone ", phone);
+  //         } else {
+  //           console.log("Không nhận được số điện thoại từ API.");
+  //         }
+  //       } catch (error) {
+  //         console.error("Lỗi khi gọi API: ", error);
+  //       }
+  //     },
+  //     fail: (error) => {
+  //       console.log(error);
+  //     },
+  //   });
+  // };
 
-  //api điểm thưởng
-  const fetchUserID = async () => {
-    // const getnumber = phone;
-    const response = await fetch(
-      "https://naman.tmsoftware.vn/api/storeCustomer",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          api_key: "8AF1apnMW2A39Ip7LUFtNstE5RjYleSf",
-          phone: "0367259158",
-          name: "nam",
-        }),
-      }
-    );
-    if (!response.ok) {
-      console.error(`HTTP error! status: ${response.status}`);
-      return;
-    }
+  // //api điểm thưởng
+  // const fetchUserID = async () => {
+  //   // const getnumber = phone;
+  //   const response = await fetch(
+  //     "https://naman.tmsoftware.vn/api/storeCustomer",
+  //     {
+  //       method: "POST",
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //       },
+  //       body: JSON.stringify({
+  //         api_key: "8AF1apnMW2A39Ip7LUFtNstE5RjYleSf",
+  //         phone: "0367259158",
+  //         name: "nam",
+  //       }),
+  //     }
+  //   );
+  //   if (!response.ok) {
+  //     console.error(`HTTP error! status: ${response.status}`);
+  //     return;
+  //   }
 
-    const data = await response.json();
-    console.log("data về :", data.data);
+  //   const data = await response.json();
+  //   console.log("data về :", data.data);
 
-    if (data.data && data.data.id) {
-      setPointTotal(data.data.total_point);
-      setPhoneNumber(data.data.phone);
-    } else {
-      console.log("Không nhận được ID người dùng từ API.");
-    }
-  };
-  // 1 phút gọi api 1 lần ,10000 = 10s
-  useEffect(() => {
-    const fetchData = async () => {
-      getAccessToken({
-        success: async (userAccessToken) => {
-          console.log("Access token:", userAccessToken);
-          await fetchPhoneNumber(userAccessToken);
-          await fetchUserID();
-          console.log("update point", pointtotal);
-        },
-        fail: (error) => {
-          console.log(error);
-        },
-      });
-    };
+  //   if (data.data && data.data.id) {
+  //     setPointTotal(data.data.total_point);
+  //     setPhoneNumber(data.data.phone);
+  //   } else {
+  //     console.log("Không nhận được ID người dùng từ API.");
+  //   }
+  // };
+  // // 1 phút gọi api 1 lần ,10000 = 10s
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     getAccessToken({
+  //       success: async (userAccessToken) => {
+  //         console.log("Access token:", userAccessToken);
+  //         await fetchPhoneNumber(userAccessToken);
+  //         await fetchUserID();
+  //         console.log("update point", pointtotal);
+  //       },
+  //       fail: (error) => {
+  //         console.log(error);
+  //       },
+  //     });
+  //   };
 
-    fetchData();
+  //   fetchData();
 
-    const interval = setInterval(fetchData, 60000);
+  //   const interval = setInterval(fetchData, 60000);
 
-    return () => clearInterval(interval);
-  }, [phone, pointtotal]);
+  //   return () => clearInterval(interval);
+  // }, [phone, pointtotal]);
 
-  //api danh sách Listinvest
-
-  useEffect(() => {
-    const fetchListInvert = async () => {
-      const response = await fetch(
-        "https://naman.tmsoftware.vn/api/getListInvest?api_key=8AF1apnMW2A39Ip7LUFtNstE5RjYleSf",
-        {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      );
-      if (!response.ok) {
-        console.error(`HTTP error! status: ${response.status}`);
-        return;
-      }
-
-      const data = await response.json();
-      console.log("data về :", data.data);
-
-      if (data.data) {
-        setListInvest(data.data);
-      } else {
-        console.log("Không nhận được ID người dùng từ API.");
-      }
-    };
-
-    fetchListInvert();
-  }, []);
+  // //api danh sách Listinvest
 
   // useEffect(() => {
-  //   const intervalId = setInterval(() => {
-  //     // Gọi hàm fetchListInvert để gọi API
-  //     const fetchListInvert = async () => {
-  //       const response = await fetch(
-  //         "https://naman.tmsoftware.vn/api/getListInvest?api_key=8AF1apnMW2A39Ip7LUFtNstE5RjYleSf",
-  //         {
-  //           method: "GET",
-  //           headers: {
-  //             "Content-Type": "application/json",
-  //           },
-  //         }
-  //       );
-  //       if (!response.ok) {
-  //         console.error(`HTTP error! status: ${response.status}`);
-  //         return;
+  //   const fetchListInvert = async () => {
+  //     const response = await fetch(
+  //       "https://naman.tmsoftware.vn/api/getListInvest?api_key=8AF1apnMW2A39Ip7LUFtNstE5RjYleSf",
+  //       {
+  //         method: "GET",
+  //         headers: {
+  //           "Content-Type": "application/json",
+  //         },
   //       }
+  //     );
+  //     if (!response.ok) {
+  //       console.error(`HTTP error! status: ${response.status}`);
+  //       return;
+  //     }
 
-  //       const data = await response.json();
-  //       console.log("data về :", data.data);
+  //     const data = await response.json();
+  //     console.log("data về :", data.data);
 
-  //       if (data.data) {
-  //         setListInvest(data.data);
-  //       } else {
-  //         console.log("Không nhận được ID người dùng từ API.");
-  //       }
-  //     };
+  //     if (data.data) {
+  //       setListInvest(data.data);
+  //     } else {
+  //       console.log("Không nhận được ID người dùng từ API.");
+  //     }
+  //   };
 
-  //     fetchListInvert();
-  //   }, 100000); // 1 phút gọi api 1 lần ,10000 = 10s
-
-  //   // Clear interval on component unmount
-  //   return () => clearInterval(intervalId);
+  //   fetchListInvert();
   // }, []);
 
-  const handleOpenSheet = (item) => {
-    setSelectedItem(item);
-    setSheetVisible(true);
-  };
 
-  const handleCloseSheet = () => {
-    setSheetVisible(false);
-    console.log("Sheet đã đóng");
-  };
+
+  // // const handleOpenSheet = (item) => {
+  // //   setSelectedItem(item);
+  // //   setSheetVisible(true);
+  // // };
+
+  // // const handleCloseSheet = () => {
+  // //   setSheetVisible(false);
+  // //   console.log("Sheet đã đóng");
+  // };
 
   return (
     //phần chứa điểm
