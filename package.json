@@ -18,7 +18,7 @@
   "scripts": {
     "build:css": "postcss src/css/tailwind.css -o src/css/styles.css",
     "start": "vite",
-    "build": "vite build --outDir dist && zmp login",
+    "build": " zmp login && vite build --outDir dist",
     "serve": "vite preview",
     "predeploy": "npm run build",
     "deploy": "vite build && gh-pages -d dist"
