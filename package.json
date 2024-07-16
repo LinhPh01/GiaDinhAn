@@ -18,7 +18,7 @@
   "scripts": {
     "build:css": "postcss src/css/tailwind.css -o src/css/styles.css",
     "start": "vite",
-    "build": "[vite build] build --output public",
+    "build": "vite build --output public",
     "serve": "vite preview",
     "predeploy": "npm run build",
     "deploy": "vite build && gh-pages -d dist"
