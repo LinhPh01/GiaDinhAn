@@ -1,1 +1,0 @@
-import{E as n}from"../constants.js.9c557f4a.js";import{e as s}from"./logger.js.1ff5fb47.js";var i=function(o,r){var e,a={error:-1404,errorMessage:"".concat(o," is not found")};r==null||(e=r.fail)===null||e===void 0||e.call(r,a),s({stage:n.NOT_FOUND,type:"error",name:o,request:r,state:"fail",response:a})};export{i as o};

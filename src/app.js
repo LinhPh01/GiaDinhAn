@@ -12,7 +12,7 @@ import "swiper/css";
 import "swiper/css/pagination";
 
 // Import App Component
-import App from "./components/app";
+import App from "./components/app.jsx";
 import appConfig from "../app-config.json";
 
 if (!window.APP_CONFIG) {
@@ -20,6 +20,6 @@ if (!window.APP_CONFIG) {
 }
 
 // Mount React App
-const root = createRoot(document.getElementById("app"));
+const root = createRoot(document.getElementById("root"));
 root.render(React.createElement(App));
 // push vercel
