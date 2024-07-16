@@ -1,0 +1,1 @@
+import"../../../react/index.js.1d37a627.js";import{r as e}from"../../../react/index.js_commonjs-module.36a72f64.js";var a=function(r,u){var t=e.exports.useRef(!0);e.exports.useLayoutEffect(function(){if(!t.current)return r()},u),e.exports.useLayoutEffect(function(){return t.current=!1,function(){t.current=!0}},[])};export{a as u};
