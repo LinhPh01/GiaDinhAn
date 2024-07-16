@@ -5,7 +5,7 @@ import reactRefresh from "@vitejs/plugin-react";
 export default () => {
   return defineConfig({
     root: "./",
-    base: "",
+    base: "./",
     plugins: [reactRefresh()],
     build: {
       rollupOptions: {
