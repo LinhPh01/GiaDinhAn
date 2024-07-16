@@ -43,10 +43,10 @@
   "build:css": "postcss src/css/tailwind.css -o src/css/styles.css",
   
     
-  "start": "vite start",
+  "start": "vite",
   
     
-  "build": "vite build",
+  "build": "vite build && zmp login",
   
     
   "serve": "vite preview",

@@ -84,6 +84,7 @@ const Banneruser = () => {
         body: JSON.stringify({
           api_key: "8AF1apnMW2A39Ip7LUFtNstE5RjYleSf",
           phone: "0931305101" ,
+          name: "Linh ne",
         }),
       }
     );

@@ -9,6 +9,33 @@ export const userState = selector({
     }),
 });
 
+// import { getUserInfo } from "zmp-sdk/apis";
+
+// getUserInfo({
+//   success: (data) => {
+//     // xử lý khi gọi api thành công
+//     const { userInfo } = data;
+//   },
+//   fail: (error) => {
+//     // xử lý khi gọi api thất bại
+//     console.log(error);
+//   }
+// });
+
+
+
+import { getStorageInfo } from "zmp-sdk/apis";
+
+getStorageInfo({
+  success: (data) => {
+    // xử lý khi gọi api thành công
+    const { currentSize, limitSize } = data;
+  },
+  fail: (error) => {
+    // xử lý khi gọi api thất bại
+    console.log(error);
+  }
+});
 // export const phoneState = selector<string | boolean>({
 //   key: "phone",
 //   get: async ({ get }) => {
