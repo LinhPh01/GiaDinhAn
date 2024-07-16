@@ -1,199 +1,199 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Text, Box, useNavigate, useSnackbar, Checkbox, Page } from "zmp-ui";
-// import { useRecoilState } from "recoil";
-// import {
-//   displayNameState,
-//   idState,
-//   emailState,
-//   ageState,
-//   genderState,
-//   locationState,
-//   allergyState,
-//   underlyingdiseaseState,
-//   phoneNumberState,
-// } from "../../state";
+import { useRecoilState } from "recoil";
+import {
+  displayNameState,
+  idState,
+  emailState,
+  ageState,
+  genderState,
+  locationState,
+  allergyState,
+  underlyingdiseaseState,
+  phoneNumberState,
+} from "../../state";
 import HeaderEdit from "./headeredit";
 import headerlogo from "../../../assets-src/header.svg";
-// import { getAccessToken, getPhoneNumber } from "zmp-sdk/apis";
+import { getAccessToken, getPhoneNumber } from "zmp-sdk/apis";
 
 const FormPage = () => {
   const navigate = useNavigate();
-  // const [phone, setPhoneNumber] = useRecoilState(phoneNumberState);
-  // const [id, setId] = useRecoilState(idState);
-  // const [name, setName] = useRecoilState(displayNameState);
-  // const [age, setAge] = useRecoilState(ageState);
-  // const [gender, setGender] = useRecoilState(genderState);
-  // const [email, setEmail] = useRecoilState(emailState);
-  // const [address, setAddress] = useRecoilState(locationState);
-  // const [allergy, setAllergy] = useRecoilState(allergyState);
-  // const [underlyingdisease, setUnderlyingdisease] = useRecoilState(
-  //   underlyingdiseaseState
-  // );
+  const [phone, setPhoneNumber] = useRecoilState(phoneNumberState);
+  const [id, setId] = useRecoilState(idState);
+  const [name, setName] = useRecoilState(displayNameState);
+  const [age, setAge] = useRecoilState(ageState);
+  const [gender, setGender] = useRecoilState(genderState);
+  const [email, setEmail] = useRecoilState(emailState);
+  const [address, setAddress] = useRecoilState(locationState);
+  const [allergy, setAllergy] = useRecoilState(allergyState);
+  const [underlyingdisease, setUnderlyingdisease] = useRecoilState(
+    underlyingdiseaseState
+  );
 
-  // const { openSnackbar } = useSnackbar(); // sử dụng thanh thông báo snackbar
+  const { openSnackbar } = useSnackbar(); // sử dụng thanh thông báo snackbar
 
-  // const secretKey = "K2UHm5uysg8RfBiDA846"; // mã key getphone
+  const secretKey = "K2UHm5uysg8RfBiDA846"; // mã key getphone
 
-  // const processPhoneNumber = (phoneNumber) => {
-  //   // chuyển số điện thoại +84 thành 0
-  //   if (phoneNumber.startsWith("84")) {
-  //     return "0" + phoneNumber.substring(2);
-  //   }
-  //   return phoneNumber;
-  // };
-  // // useEffect lấy số điện thoại khi vừa mở app
-  // useEffect(() => {
-  //   getAccessToken({
-  //     success: (userAccessToken) => {
-  //       console.log("Access token:", userAccessToken);
-  //       getPhoneNumber({
-  //         success: async (data) => {
-  //           let { token } = data;
-  //           console.log("Token:", token);
-  //           try {
-  //             const response = await fetch(
-  //               "https://graph.zalo.me/v2.0/me/info",
-  //               {
-  //                 headers: {
-  //                   access_token: userAccessToken,
-  //                   code: token,
-  //                   secret_key: secretKey,
-  //                 },
-  //               }
-  //             );
+  const processPhoneNumber = (phoneNumber) => {
+    // chuyển số điện thoại +84 thành 0
+    if (phoneNumber.startsWith("84")) {
+      return "0" + phoneNumber.substring(2);
+    }
+    return phoneNumber;
+  };
+  // useEffect lấy số điện thoại khi vừa mở app
+  useEffect(() => {
+    getAccessToken({
+      success: (userAccessToken) => {
+        console.log("Access token:", userAccessToken);
+        getPhoneNumber({
+          success: async (data) => {
+            let { token } = data;
+            console.log("Token:", token);
+            try {
+              const response = await fetch(
+                "https://graph.zalo.me/v2.0/me/info",
+                {
+                  headers: {
+                    access_token: userAccessToken,
+                    code: token,
+                    secret_key: secretKey,
+                  },
+                }
+              );
 
-  //             if (!response.ok) {
-  //               throw new Error(`lỗi response: ${response.status}`);
-  //             }
+              if (!response.ok) {
+                throw new Error(`lỗi response: ${response.status}`);
+              }
 
-  //             const data = await response.json();
-  //             console.log("data trả về :", data);
+              const data = await response.json();
+              console.log("data trả về :", data);
 
-  //             if (data.data && data.data.number) {
-  //               const formattedPhoneNumber = processPhoneNumber(
-  //                 data.data.number
-  //               );
-  //               setPhoneNumber(formattedPhoneNumber);
-  //               console.log("Cập nhật sdt:", formattedPhoneNumber);
-  //             } else {
-  //               console.log("Không nhận được số điện thoại từ API.");
-  //             }
-  //           } catch (error) {
-  //             console.error("Lỗi khi gọi API: ", error);
-  //           }
-  //         },
-  //         fail: (error) => {
-  //           console.log(error);
-  //         },
-  //       });
-  //     },
-  //     fail: (error) => {
-  //       console.log(error);
-  //     },
-  //   });
-  //   // lưu dữ liệu lại trong localStorage để hiển thị cho đến khi có thay đổi khác
-  //   const storedUserData = localStorage.getItem("userData");
-  //   if (storedUserData) {
-  //     const userData = JSON.parse(storedUserData);
-  //     setPhoneNumber(userData.phone);
-  //     setName(userData.name);
-  //     setGender(userData.gender);
-  //     setAge(userData.age);
-  //     setEmail(userData.email);
-  //     setAddress(userData.address);
-  //     setAllergy(userData.allergy);
-  //     setUnderlyingdisease(userData.underlying_disease);
-  //   }
-  // }, [
-  //   setPhoneNumber,
-  //   setName,
-  //   setGender,
-  //   setAge,
-  //   setEmail,
-  //   setAddress,
-  //   setAllergy,
-  //   setUnderlyingdisease,
-  // ]);
-  // // api update thay đổi thông tin người dùng nếu không nhập gì trả về null
-  // const handleSubmit = async (e) => {
-  //   e.preventDefault();
+              if (data.data && data.data.number) {
+                const formattedPhoneNumber = processPhoneNumber(
+                  data.data.number
+                );
+                setPhoneNumber(formattedPhoneNumber);
+                console.log("Cập nhật sdt:", formattedPhoneNumber);
+              } else {
+                console.log("Không nhận được số điện thoại từ API.");
+              }
+            } catch (error) {
+              console.error("Lỗi khi gọi API: ", error);
+            }
+          },
+          fail: (error) => {
+            console.log(error);
+          },
+        });
+      },
+      fail: (error) => {
+        console.log(error);
+      },
+    });
+    // lưu dữ liệu lại trong localStorage để hiển thị cho đến khi có thay đổi khác
+    const storedUserData = localStorage.getItem("userData");
+    if (storedUserData) {
+      const userData = JSON.parse(storedUserData);
+      setPhoneNumber(userData.phone);
+      setName(userData.name);
+      setGender(userData.gender);
+      setAge(userData.age);
+      setEmail(userData.email);
+      setAddress(userData.address);
+      setAllergy(userData.allergy);
+      setUnderlyingdisease(userData.underlying_disease);
+    }
+  }, [
+    setPhoneNumber,
+    setName,
+    setGender,
+    setAge,
+    setEmail,
+    setAddress,
+    setAllergy,
+    setUnderlyingdisease,
+  ]);
+  // api update thay đổi thông tin người dùng nếu không nhập gì trả về null
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
-  //   console.log({
-  //     phone,
-  //     name,
-  //     age,
-  //     gender,
-  //     email,
-  //     allergy,
-  //     underlying_disease: underlyingdisease,
-  //     address,
-  //   });
+    console.log({
+      phone,
+      name,
+      age,
+      gender,
+      email,
+      allergy,
+      underlying_disease: underlyingdisease,
+      address,
+    });
 
-  //   const response = await fetch(
-  //     "https://naman.tmsoftware.vn/api/storeCustomer",
-  //     {
-  //       method: "POST",
-  //       headers: {
-  //         "Content-Type": "application/json",
-  //       },
-  //       body: JSON.stringify({
-  //         api_key: "8AF1apnMW2A39Ip7LUFtNstE5RjYleSf",
-  //         phone: "0367259158",
-  //         name: "nam",
-  //         age: age || null,
-  //         gender: gender || null,
-  //         email: email || null,
-  //         allergy: allergy || null,
-  //         underlying_disease: underlyingdisease || null,
-  //         address: address || null,
-  //       }),
-  //     }
-  //   );
-  //   if (!response.ok) {
-  //     console.error(`lỗi response: ${response.status}`);
-  //     return;
-  //   }
+    const response = await fetch(
+      "https://naman.tmsoftware.vn/api/storeCustomer",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          api_key: "8AF1apnMW2A39Ip7LUFtNstE5RjYleSf",
+          phone: phone || null,
+          name: name || null,
+          age: age || null,
+          gender: gender || null,
+          email: email || null,
+          allergy: allergy || null,
+          underlying_disease: underlyingdisease || null,
+          address: address || null,
+        }),
+      }
+    );
+    if (!response.ok) {
+      console.error(`lỗi response: ${response.status}`);
+      return;
+    }
 
-  //   const data = await response.json();
-  //   console.log("data về:", data.data);
+    const data = await response.json();
+    console.log("data về:", data.data);
 
-  //   if (data.data && data.data.id) {
-  //     setPhoneNumber(data.data.phone);
-  //     setName(data.data.name);
-  //     setGender(data.data.gender);
-  //     setAge(data.data.age);
-  //     setEmail(data.data.email);
-  //     setAddress(data.data.address);
-  //     setAllergy(data.data.allergy);
-  //     setUnderlyingdisease(data.data.underlying_disease);
+    if (data.data && data.data.id) {
+      setPhoneNumber(data.data.phone);
+      setName(data.data.name);
+      setGender(data.data.gender);
+      setAge(data.data.age);
+      setEmail(data.data.email);
+      setAddress(data.data.address);
+      setAllergy(data.data.allergy);
+      setUnderlyingdisease(data.data.underlying_disease);
 
-  //     localStorage.setItem(
-  //       "userData",
-  //       JSON.stringify({
-  //         phone: data.data.phone,
-  //         name: data.data.name,
-  //         gender: data.data.gender,
-  //         age: data.data.age,
-  //         email: data.data.email,
-  //         address: data.data.address,
-  //         allergy: data.data.allergy,
-  //         underlying_disease: data.data.underlying_disease,
-  //       })
-  //     );
+      localStorage.setItem(
+        "userData",
+        JSON.stringify({
+          phone: data.data.phone,
+          name: data.data.name,
+          gender: data.data.gender,
+          age: data.data.age,
+          email: data.data.email,
+          address: data.data.address,
+          allergy: data.data.allergy,
+          underlying_disease: data.data.underlying_disease,
+        })
+      );
 
-  //     openSnackbar({
-  //       text: "Thông tin đã được lưu thành công!",
-  //       type: "success",
-  //       duration: 3000,
-  //     });
-  //   } else {
-  //     console.log("Không nhận được ID người dùng từ API.");
-  //   }
-  // };
+      openSnackbar({
+        text: "Thông tin đã được lưu thành công!",
+        type: "success",
+        duration: 3000,
+      });
+    } else {
+      console.log("Không nhận được ID người dùng từ API.");
+    }
+  };
 
-  // const handleBack = () => {
-  //   navigate(-1);
-  // };
+  const handleBack = () => {
+    navigate(-1);
+  };
 
   return (
     <div className="bg-page-color">
