@@ -17,11 +17,10 @@
   ],
   "scripts": {
     "build:css": "postcss src/css/tailwind.css -o src/css/styles.css",
-    "start": "vite",
-    "build": "vite build --output public",
-    "serve": "vite preview",
-    "predeploy": "npm run build",
-    "deploy": "vite build && gh-pages -d dist"
+    "start": "zmp start",
+    "build": "zmp build",
+    
+    "deploy": "zmp deploy"
   },
   "dependencies": {
     "@vitejs/plugin-react": "^1.3.0",
