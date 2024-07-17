@@ -1,14 +1,14 @@
 import { defineConfig } from "vite";
-import react from "@vitejs/plugin-react";
+import reactRefresh from "@vitejs/plugin-react";
 
 // https://vitejs.dev/config/
 export default () => {
   return defineConfig({
    
     base: "",
-    plugins: [react()],
+    plugins: [reactRefresh()],
     build: {
-      outDir: 'dist',
+      outDir: '../dist',
       polyfillModulePreload:false,
       rollupOptions: {
       output:{
