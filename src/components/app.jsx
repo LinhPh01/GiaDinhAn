@@ -1,5 +1,6 @@
 import React from "react";
 import { Route } from "react-router-dom";
+import { BrowserRouter } from "react-router-dom";
 import { App, AnimationRoutes, SnackbarProvider } from "zmp-ui";
 import { RecoilRoot } from "recoil";
 import HomePage from "../pages";
