@@ -18,10 +18,9 @@
   "scripts": {
     "build:css": "postcss src/css/tailwind.css -o src/css/styles.css",
     "start": "vite",
-    "build": "vite build --outDir dist",
+    "build:web": "vite build",
     "serve": "vite preview",
-    "predeploy": "npm run build",
-    "deploy": "vite build && gh-pages -d dist"
+    "predeploy": "npm run build"
   },
   "dependencies": {
     "@vitejs/plugin-react": "^1.3.0",

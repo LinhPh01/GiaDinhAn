@@ -1,1 +1,0 @@
-import{n as e}from"./_set_prototype_of.mjs.js.f672f343.js";function o(t,r){if(typeof r!="function"&&r!==null)throw new TypeError("Super expression must either be null or a function");t.prototype=Object.create(r&&r.prototype,{constructor:{value:t,writable:!0,configurable:!0}}),r&&e(t,r)}export{o as e};

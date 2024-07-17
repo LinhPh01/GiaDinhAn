@@ -1,1 +1,0 @@
-import{o as l}from"./_super_prop_base.mjs.js.a0a6be0d.js";function f(e,t,r){return f=typeof Reflect!="undefined"&&Reflect.get?Reflect.get:function(c,o,i){var u=l(c,o);if(u){var n=Object.getOwnPropertyDescriptor(u,o);return n.get?n.get.call(i||c):n.value}},f(e,t,r)}function p(e,t,r){return f(e,t,r)}export{p as r};

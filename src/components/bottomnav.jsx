@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { BottomNavigation } from "zmp-ui";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router";
 import { HiHome } from "react-icons/hi2";
 import { HiGift } from "react-icons/hi2";
 import { FaUser } from "react-icons/fa6";

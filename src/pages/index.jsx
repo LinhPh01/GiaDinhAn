@@ -3,7 +3,7 @@ import { Page, Box } from "zmp-ui";
 import Category from "./category";
 import Headerr from "./headeruser";
 import Swiperbanner from "./swiperbanner";
-import Exchange from "./exchange";
+
 import Swipermedicin from "./swipermedicin";
 import { RecoilRoot } from "recoil";
 import Banneruser from "./banneruser";

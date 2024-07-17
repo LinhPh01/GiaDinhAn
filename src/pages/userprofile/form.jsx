@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
-import { Text, Box, useNavigate, useSnackbar, Checkbox, Page } from "zmp-ui";
+import { Text, Box, useSnackbar, Checkbox } from "zmp-ui";
+import { useNavigate } from "react-router";
 import { useRecoilState } from "recoil";
 import {
   displayNameState,

@@ -1,6 +1,6 @@
 import React from "react";
-import { Header, Box, Text, Icon, useNavigate } from "zmp-ui";
-
+import { Header, Box, Text, Icone } from "zmp-ui";
+import { useNavigate } from "react-router";
 const Headergift = () => {
   const navigate = useNavigate();
   return (
@@ -13,7 +13,7 @@ const Headergift = () => {
           <Icon
             icon="zi-chevron-left"
             onClick={() => {
-              navigate("/");
+              navigate("./");
             }}
           />
           <Text.Title size="small">Đổi quà</Text.Title>

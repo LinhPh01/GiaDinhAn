@@ -1,6 +1,6 @@
 import React from "react";
 import { Route } from "react-router-dom";
-import { App, ZMPRouter, AnimationRoutes, SnackbarProvider } from "zmp-ui";
+import { App, AnimationRoutes, SnackbarProvider } from "zmp-ui";
 import { RecoilRoot } from "recoil";
 import HomePage from "../pages";
 import PageFile from "../pages/file";
@@ -19,7 +19,7 @@ const MyApp = () => {
     <RecoilRoot>
       <App>
         <SnackbarProvider>
-          <ZMPRouter>
+          <BrowserRouter>
             <AnimationRoutes>
               <Route path="/" element={<HomePage></HomePage>}></Route>
               <Route
@@ -42,7 +42,7 @@ const MyApp = () => {
               <Route path="/gift" element={<PageGift></PageGift>}></Route>
             </AnimationRoutes>
             <BottomNav />
-          </ZMPRouter>
+          </BrowserRouter>
         </SnackbarProvider>
       </App>
     </RecoilRoot>

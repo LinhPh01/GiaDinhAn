@@ -9,21 +9,6 @@ export const userState = selector({
     }),
 });
 
-import { login } from "zmp-sdk/apis";
-
-const handleLogin = () => {
-  login({
-    success: () => {
-      // login thành công
-      console.log("thành công")
-    },
-    fail: (error) => {
-      // login thất bại
-      console.log(error);
-    },
-  });
-};
-
 // import { getUserInfo } from "zmp-sdk/apis";
 
 // getUserInfo({
