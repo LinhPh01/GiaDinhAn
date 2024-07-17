@@ -1,1 +1,0 @@
-import{f as m}from"./fixOptions.js_commonjs-exports.c05cf43b.js";Object.defineProperty(m,"__esModule",{value:!0});m.default=a;function a(r){return r.marginTop=r.marginTop||r.margin,r.marginBottom=r.marginBottom||r.margin,r.marginRight=r.marginRight||r.margin,r.marginLeft=r.marginLeft||r.margin,r}
