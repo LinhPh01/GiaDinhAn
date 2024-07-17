@@ -140,7 +140,7 @@ const Banneruser = () => {
               <Box className="barcode-container ">
                 <Text.Title size="large text-white">{name}</Text.Title>
 
-                <Text size="xSmall text-white">Bậc : {ranks}</Text>
+                <Text size="xSmall text-white">Bậc :</Text>
               </Box>
 
               <div className="zui-custom-bg-text absolute right-0 rounded-l-full px-4 py-2 text-white bg-slate-400">

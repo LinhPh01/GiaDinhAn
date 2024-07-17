@@ -8,7 +8,7 @@ export default () => {
     base: "",
     plugins: [reactRefresh()],
     build: {
-      outDir: '../dist',
+      // outDir: '../dist',
       polyfillModulePreload:false,
       rollupOptions: {
       // output:{

@@ -17,9 +17,9 @@ const HomePage = () => {
           <Banneruser />
           <Category />
           <Swiperbanner />
-          <Suspense>
+         
             <Swipermedicin />
-          </Suspense>
+          
         </div>
       </Page>
     </div>
