@@ -1,26 +1,19 @@
 import React, { useState, useEffect } from "react";
-import { useSetRecoilState, useRecoilValue, useRecoilState } from "recoil";
+import {  useRecoilState } from "recoil";
 import {
   displayNameState,
-  idState,
   phoneNumberState,
-  totalPointState,
-  ranksState,
-  userState,
+  
 } from "../state";
 import { getAccessToken, getPhoneNumber } from "zmp-sdk/apis";
 import { Box, Text } from "zmp-ui";
 import Barcode from "react-barcode";
 
 const Banneruser = () => {
-  const setId = useSetRecoilState(idState);
-  const id = useRecoilValue(idState);
-  const setName = useSetRecoilState(displayNameState);
-  const nameuser = useRecoilValue(displayNameState);
   const [phone, setPhoneNumber] = useRecoilState(phoneNumberState);
-  const { userInfo: user } = useRecoilValue(userState);
-  const [pointtotal, setPointTotal] = useRecoilState(totalPointState);
-  const [ranks, setRanks] = useRecoilState(ranksState);
+  const [name, setName] = useRecoilState(displayNameState);
+  const [pointtotal, setPointTotal] = useState();
+ 
   const secretKey = "K2UHm5uysg8RfBiDA846";
   
   // thay đổi +84 thành 0
@@ -31,7 +24,6 @@ const Banneruser = () => {
     return phoneNumber;
   };
 
-  // lấy số điện thoại từ zalo
   const fetchPhoneNumber = async (userAccessToken) => {
     getPhoneNumber({
       success: async (data) => {
@@ -48,7 +40,7 @@ const Banneruser = () => {
           });
 
           if (!response.ok) {
-            throw new Error(`lỗi response: ${response.status}`);
+            throw new Error(`HTTP error! status: ${response.status}`);
           }
 
           const data = await response.json();
@@ -57,7 +49,7 @@ const Banneruser = () => {
           if (data.data && data.data.number) {
             const formattedPhoneNumber = processPhoneNumber(data.data.number);
             setPhoneNumber(formattedPhoneNumber);
-            console.log("update sdt", phone);
+            console.log("change phone ", phone);
           } else {
             console.log("Không nhận được số điện thoại từ API.");
           }
@@ -71,9 +63,9 @@ const Banneruser = () => {
     });
   };
 
-  // gọi thông tin id người dùng
+  //api điểm thưởng
   const fetchUserID = async () => {
-    const getnumber = "0931305101";
+    // const getnumber = phone;
     const response = await fetch(
       "https://naman.tmsoftware.vn/api/storeCustomer",
       {
@@ -83,12 +75,13 @@ const Banneruser = () => {
         },
         body: JSON.stringify({
           api_key: "8AF1apnMW2A39Ip7LUFtNstE5RjYleSf",
-          phone: getnumber ,
+          phone: "0931305101",
+          name: "nam",
         }),
       }
     );
     if (!response.ok) {
-      console.error(`lỗi reponse: ${response.status}`);
+      console.error(`HTTP error! status: ${response.status}`);
       return;
     }
 
@@ -96,59 +89,13 @@ const Banneruser = () => {
     console.log("data về :", data.data);
 
     if (data.data && data.data.id) {
-      setId(data.data.id);
-      setName(data.data.name);
       setPointTotal(data.data.total_point);
       setPhoneNumber(data.data.phone);
+      setName(data.data.name);
     } else {
-      console.log("Không nhận được id người dùng từ API.");
+      console.log("Không nhận được ID người dùng từ API.");
     }
   };
-
-  // api điểm và rank điểm
-  const fetchUserPoint = async () => {
-    try {
-      const response = await fetch(
-        "https://naman.tmsoftware.vn/api/getListRate?api_key=8AF1apnMW2A39Ip7LUFtNstE5RjYleSf",
-        {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      );
-
-      if (!response.ok) {
-        console.error(`lỗi response: ${response.status}`);
-        return;
-      }
-      const data = await response.json();
-      console.log("data rank :", data.data);
-      if (data.data) {
-        const point = pointtotal;
-        console.log("point là", point);
-        // Tìm tên danh hiệu dựa trên điểm point
-        const rank = data.data.find((item) => {
-          return (
-            point >= parseInt(item.min_point) &&
-            point <= parseInt(item.max_point)
-          );
-        });
-
-        if (rank) {
-          console.log("Tên danh hiệu:", rank.name);
-          setRanks(rank.name);
-        } else {
-          console.log("Không tìm thấy danh hiệu cho điểm này.");
-        }
-      } else {
-        console.log("Không nhận được dữ liệu từ API.");
-      }
-    } catch (error) {
-      console.error("Fetch lỗi: ", error);
-    }
-  };
-
   // 1 phút gọi api 1 lần ,10000 = 10s
   useEffect(() => {
     const fetchData = async () => {
@@ -157,22 +104,22 @@ const Banneruser = () => {
           console.log("Access token:", userAccessToken);
           await fetchPhoneNumber(userAccessToken);
           await fetchUserID();
-          await fetchUserPoint();
+          console.log("update point", pointtotal);
         },
         fail: (error) => {
           console.log(error);
         },
       });
     };
-    
+
     fetchData();
 
     const interval = setInterval(fetchData, 60000);
 
     return () => clearInterval(interval);
-  }, [phone, pointtotal, ranks]);
+  }, [phone, pointtotal]);
   
-  const mavach = "0931305101" && "30";
+  
 
   return (
     <Box
@@ -191,7 +138,7 @@ const Banneruser = () => {
           >
             <div className="flex flex-cols-2 justify-between items-center pt-4 px-4 ">
               <Box className="barcode-container ">
-                <Text.Title size="large text-white">{nameuser}</Text.Title>
+                <Text.Title size="large text-white">{name}</Text.Title>
 
                 <Text size="xSmall text-white">Bậc : {ranks}</Text>
               </Box>
