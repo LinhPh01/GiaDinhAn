@@ -18,7 +18,7 @@
   "scripts": {
     "build:css": "postcss src/css/tailwind.css -o src/css/styles.css",
     "start": "vite",
-    "build:web": "vite build",
+    "build": "vite build",
     "serve": "vite preview",
     "predeploy": "npm run build"
   },
